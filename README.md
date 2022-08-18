@@ -10,5 +10,5 @@ git clone git@github.com:skoltech-nlp/wikidata-simplequestions-hf.git wikidata_s
 
 ```python3
 from datasets import load_dataset;
-load_dataset('../wikidata_simplequestions', 'answerable_en', cache_dir='/YOUR_PATH_TO_CACHE/')
+load_dataset('../wikidata_simplequestions', 'answerable_en', cache_dir='/YOUR_PATH_TO_CACHE/', ignore_verifications=True)
 ```
