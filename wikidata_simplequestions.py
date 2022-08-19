@@ -103,27 +103,21 @@ class WikidataSimpleQuestions(datasets.GeneratorBasedBuilder):
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
                 gen_kwargs={
-                    "filepath": dl_manager.download(
-                        _URL + f"annotated_wd_data_train{version}.txt"
-                    ),
+                    "filepath": os.path.join(data_dir, f"annotated_wd_data_train{version}.txt"),
                     "vocab_path": vocab_path,
                 },
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
                 gen_kwargs={
-                    "filepath": dl_manager.download(
-                        _URL + f"annotated_wd_data_valid{version}.txt"
-                    ),
+                    "filepath": os.path.join(data_dir, f"annotated_wd_data_valid{version}.txt"),
                     "vocab_path": vocab_path,
                 },
             ),
             datasets.SplitGenerator(
                 name=datasets.Split.TEST,
                 gen_kwargs={
-                    "filepath": dl_manager.download(
-                        _URL + f"annotated_wd_data_test{version}.txt"
-                    ),
+                    "filepath": os.path.join(data_dir, f"annotated_wd_data_test{version}.txt"),
                     "vocab_path": vocab_path,
                 },
             ),
@@ -133,7 +127,7 @@ class WikidataSimpleQuestions(datasets.GeneratorBasedBuilder):
 
         with open(vocab_path, "r") as file_handler:
             wikidata_vocab = json.load(file_handler)
-
+        wikidata_vocab = {v:k for k,v in wikidata_vocab.items()}
         with open(filepath, encoding="utf-8") as f:
             for key, row in enumerate(f):
                 data = row.split("\t")
