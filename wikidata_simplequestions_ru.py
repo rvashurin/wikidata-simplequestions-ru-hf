@@ -9,7 +9,7 @@ from datasets.utils import logging
 
 _DESCRIPTION = """\
 HuggingFace wrapper for https://github.com/askplatypus/wikidata-simplequestions dataset
-Simplequestions dataset based on Wikidata.
+Simplequestions dataset based on Wikidata. Machine-translated into Russian.
 """
 
 # TODO: Add a link to an official homepage for the dataset here
